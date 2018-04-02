@@ -1,8 +1,6 @@
 var header = document.querySelector('header');
 var section = document.querySelector('section');
 
-var headerInfo = document.querySelector('header.info');
-
 var container = document.createElement('div');
 container.setAttribute('class', 'container');
 
@@ -31,7 +29,7 @@ request.onload = function() {
   // objMovies(jsonObj);
 
 
-};  
+};
 
 function showMovies(jsonObj){
   var movies = jsonObj;
