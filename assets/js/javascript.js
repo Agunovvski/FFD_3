@@ -4,6 +4,8 @@ var section = document.querySelector('section');
 var container = document.createElement('div');
 container.setAttribute('class', 'container');
 
+var headerInfo = document.querySelector('header.card-info');
+
 
 
 
@@ -42,15 +44,64 @@ function showMovies(jsonObj){
       h1.textContent = movies[i].title;
 
     var p = document.createElement('p');
-    movies.plot = movies[i].plot.substring(0, 300);
-    p.textContent = `${movies.plot}...`;
+    p.textContent = movies[i].simple_plot;
+
+    var pRd = document.createElement('p');
+    pRd.className = "release-date";
+    pRd.textContent = movies[i].release_date;
+
+    var pGenre = document.createElement('p');
+    pGenre.className = "genre";
+    pGenre.textContent = movies[i].genres;
+
+    // var pActors = document.createElement('p');
+    // pActors.className = "acteurs";
+    // pActors.textContent = movies[i].actors[i].actor_name;
+
+    var directorsUl = document.createElement('ul');
+    for (var g = 0; g < movies[i].directors.length; g++) {
+      var directorName = document.createElement('li');  
+      directorName.textContent = movies[i].directors[g].name;
+      directorsUl.appendChild(directorName);
+    }
+
+    var actorsUl = document.createElement('ul');
+    for (x=0; x < movies[i].actors.length; x++) {
+      var actorsLi = document.createElement('li');
+      actorsLi.textContent = movies[i].actors[x].actor_name;
+      actorsUl.appendChild(actorsLi);
+    }
+
+    var img = document.createElement('img');
+    img.src = movies[i].cover;
 
 
     container.appendChild(card);
     card.appendChild(h1);
+    card.appendChild(img);
+    card.appendChild(pRd);
+    card.appendChild(pGenre);
     card.appendChild(p);
+    // card.appendChild(pActors);
+    card.appendChild(directorsUl);
+    card.appendChild(actorsUl);
 
     section.appendChild(container);
+
+    // cards.addEventListener('click', showInfo);
+
+
+  }
+
+  var cards = document.querySelectorAll('div.card');
+  var welcomeHead = document.querySelector('h1.welcome');
+
+  for (i = 0; i < cards.length; i++) {
+    cards[i].addEventListener('click', showInfo);
+  }
+
+  function showInfo(e){
+    e.target.classList.toggle('groter');
   }
 
 
@@ -81,6 +132,6 @@ function showMovies(jsonObj){
 //     myArticle.appendChild(myPara1);
 //
 //     section.appendChild(myArticle);
-//   }
+  // }
 
 }

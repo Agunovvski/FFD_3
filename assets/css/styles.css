@@ -21,14 +21,14 @@ html {
 h1 {
   text-align: center;
   padding: 1.5rem 2.5rem;
-  background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
+  background-image: linear-gradient(to right, #ff0844 0%, #ffb199 100%);
   margin: 0 0 2rem 0;
   font-size: 1.5rem;
   color: white;
 }
 
 header.banner{
-  background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
+  background-image: linear-gradient(to right, #ff0844 0%, #ffb199 100%);
   height: 50vh;
 }
 
@@ -43,7 +43,11 @@ header.banner h1.welcome{
 header.banner p{
   text-align: center;
   font-size: 1.2rem;
+  color: white;
+}
 
+.change-color{
+  color: blue;
 }
 
 
@@ -51,11 +55,24 @@ img {
   display: block;
   margin: 1rem auto;
   max-width: 100%;
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
+  border-radius: 12px;
 }
 
 p {
   padding: 0 2.5rem 2.5rem;
   margin: 0;
+}
+
+p.genre, p.release-date{
+  color: #666;
+  padding: 0 2.5rem .2rem 2.5rem;
+  font-weight: bold;
+}
+
+ul{
+  padding: 0 2.5rem 2.5rem;
+  list-style-type: none;
 }
 
 .container {
@@ -70,6 +87,10 @@ p {
   border-radius: 12px;
   overflow: hidden;
   transition: all .2s linear;
+}
+
+.groter{
+  border-radius: 2px;
 }
 
 .card:hover, .card:active {
@@ -93,19 +114,20 @@ p {
 
 
 .card:nth-child(2n) h1 {
-  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background-image: linear-gradient(to right, #c79081 0%, #dfa579 100%);
 }
 
 .card:nth-child(3n) h1 {
-  background-image: linear-gradient(120deg, #DFFFCD 0%, #90F9C4 48%, #39F3BB 100%);
+  background: linear-gradient(to right, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+ background-blend-mode: multiply;
 }
 
 .card:nth-child(4n) h1 {
-  background-image: linear-gradient(120deg, #ff9a9e 0%, #fecfef 100%);
+  background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
 }
 
 .card:nth-child(5n) h1 {
-  background-image: linear-gradient(120deg, #ffc3a0 0%, #ffafbd 100%);
+  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
 }
 
 .card:nth-child(6n) h1 {
