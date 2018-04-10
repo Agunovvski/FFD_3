@@ -52,6 +52,7 @@ div.scroll-indicator {
     top: 50vh;
     transform: translate(-50%, -50%);
     right: 5vw;
+    z-index: 99;
 }
 
 ul.scroll-list{
@@ -89,7 +90,7 @@ header.banner{
 
 header.banner h1.welcome{
   padding-top: 4rem;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   font-size: 2.3rem;
   margin: 0;
   /* padding: 1.5rem; */
@@ -148,13 +149,23 @@ li{
   /* display: inline; */
 }
 
+&::-webkit-scrollbar {
+  display: none;
+}
+
+/* section{
+  -webkit-overflow-scrolling: touch;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+} */
+
 .container {
   display: flex;
   flex-wrap: wrap;
-  /* overflow-x: scroll;
-  overflow-y: hidden; */
-  /* height: 30rem; */
-  /* white-space: nowrap; */
+  flex: 0 0 auto;
+  -webkit-overflow-scrolling: touch;
+  /* flex-wrap: nowrap; */
+  overflow-x: auto;
 }
 
 .card {
@@ -164,6 +175,7 @@ li{
   border-radius: 12px;
   overflow: hidden;
   transition: all .2s linear;
+  display: inline-block;
 }
 
 /* .groter{
@@ -191,7 +203,7 @@ button:active{
 
 
 .container-content{
-  transition: opacity .2s ease-out, max-height .5s ease-out;
+  transition: opacity .2s ease-out, max-height 1s ease-out;
     opacity: 0;
     max-height: 0rem;
     overflow: hidden;

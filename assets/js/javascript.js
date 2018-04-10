@@ -112,71 +112,21 @@ function showMovies(jsonObj){
     section.appendChild(container);
 
 
-    var loadButtons = document.querySelectorAll('button.more');
-    var selectCc = document.querySelectorAll('div.container-content');
+    var loadButtons = document.querySelectorAll('button.more'); // selecteer alle buttons
+    var selectCc = document.querySelectorAll('div.container-content');  // selecteer alle containers
 
-    // function toggleInfo(b){
-    //   for (var o = 0; o < selectCc.length; o++) {
-    //     selectCc[o].classList.add('container-content-clicked');
-    //   }
-    // }
-    // loadButtons.addEventListener('click', function(){
-    //   for (o = 0; o < selectcc.length; o++) {
-    //     selectcc[o].classList.toggle.toggle('container-content-clicked');
-    //   }
-    // });
-
-    for (b = 0; b < loadButtons.length; b++) {
-      loadButtons[b].addEventListener('click', function(){
-        for (var o = 0; o < selectCc.length; o++) {
-          selectCc[o].classList.add('container-content-clicked');
-        }
-      });
+    for (b = 0; b < loadButtons.length; b++) { // for loop voor de buttons
+      loadButtons[b].addEventListener('click', containerAdd);  // click event op buttons: run function
     }
 
+    function containerAdd(){
+      this.previousSibling.classList.toggle('container-content-clicked');
+      // bij de button wat je clickt, selecteer Nodechild binnen in hetzelfde DOM Tree: previousSibling
+      // toggle deze class 
 
-  }
+    }
 
-  // var cards = document.querySelectorAll('div.card');
-  // var welcomeHead = document.querySelector('h1.welcome');
-  //
-  // for (i = 0; i < cards.length; i++) {
-  //   cards[i].addEventListener('click', showInfo);
-  // }
-  //
-  // function showInfo(e){
-  //   e.target.classList.toggle('groter');
-  // }
-
-
-
-//   var myH1 = document.createElement('h1');
-//   myH1.textContent = jsonObj[1].title;
-//
-//   header.appendChild(myH1);
-//
-//   var myPara = document.createElement('p');
-//   myPara.textContent = jsonObj[1].plot;
-//
-//   header.appendChild(myPara);
-// }
-//
-// function objMovies(jsonObj){
-//   var actors = jsonObj[1].actors;
-//   console.log(actors);
-//   for(var i=0; i < actors.length; i++){
-//     var myArticle = document.createElement('article');
-//     var myH2 = document.createElement('h2');
-//     var myPara1 = document.createElement('p');
-//
-//     myH2.textContent = actors[i].actor_name;
-//     myPara1.textContent = 'Secret identity: ' + actors[i].character;
-//
-//     myArticle.appendChild(myH2);
-//     myArticle.appendChild(myPara1);
-//
-//     section.appendChild(myArticle);
-  // }
+  } // einde van een bovenste for loop
 
 }
 
@@ -218,3 +168,18 @@ function showSection(){
 }
 
 window.addEventListener('scroll', showSection);
+
+// randomcolor
+
+
+
+window.onload = function(e){
+  var colors = ["linear-gradient(to right, #ff0844 0%, #ffb199 100%)", "linear-gradient(to right, #c79081 0%, #dfa579 100%", "linear-gradient(to right, #f9d423 0%, #ff4e50 100%)", "linear-gradient(to right, #243949 0%, #517fa4 100%)", "linear-gradient(to right, #e14fad 0%, #f9d423 100%)" ];
+
+  var color = colors[Math.floor(Math.random()*colors.length)];
+  var headerBanner = document.querySelector('header.banner');
+  var headerTitle = document.querySelector('h1.welcome');
+  headerBanner.style.backgroundImage = color;
+  headerTitle.style.backgroundImage = color;
+  document.getElementById("myBar").style.backgroundImage = color;
+};
