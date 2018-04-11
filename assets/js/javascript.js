@@ -52,10 +52,6 @@ function showMovies(jsonObj){
     pGenre.className = "genre";
     pGenre.textContent = movies[i].genres;
 
-    // var pActors = document.createElement('p');
-    // pActors.className = "acteurs";
-    // pActors.textContent = movies[i].actors[i].actor_name;
-
     var dirTitel = document.createElement('h5');
     dirTitel.setAttribute('class', 'titel');
     dirTitel.textContent = "Directors";
@@ -80,18 +76,19 @@ function showMovies(jsonObj){
       actorsUl.appendChild(actorsLi);
     }
 
-    if (movies[i].actors.length > 4) {
+    if (movies[i].actors.length > 6) {
       var moreActors = document.createElement('li');
-      moreActors.textContent = "+" + movies[i].actors.length -4 + ' more';
+      moreActors.textContent +=  movies[i].actors.length -6 + ' more';
       actorsUl.appendChild(moreActors);
     }
 
     var img = document.createElement('img');
     img.src = movies[i].cover;
 
-    var loadMore = document.createElement('button');
+    var loadMore = document.createElement('img');
     loadMore.setAttribute('class', 'more');
-    loadMore.textContent = "Read more";
+    loadMore.src = "./images/arrow-grey.png";
+    // loadMore.textContent = "Read more";
 
     var containerContent = document.createElement('div');
     containerContent.setAttribute('class', 'container-content');
@@ -113,27 +110,35 @@ function showMovies(jsonObj){
 
 
     var loadButtons = document.querySelectorAll('button.more'); // selecteer alle buttons
-    var selectCc = document.querySelectorAll('div.container-content');  // selecteer alle containers
+    var selectCc = document.querySelector('div.container-content');  // selecteer alle containers
+    var cards = document.querySelectorAll('div.card');
 
-    for (b = 0; b < loadButtons.length; b++) { // for loop voor de buttons
-      loadButtons[b].addEventListener('click', containerAdd);  // click event op buttons: run function
-    }
-
-    function containerAdd(){
-      this.previousSibling.classList.toggle('container-content-clicked');
-      // bij de button wat je clickt, selecteer Nodechild binnen in hetzelfde DOM Tree: previousSibling
-      // toggle deze class 
-
+     for (b = 0; b < cards.length; b++) { // for loop voor de buttons
+      cards[b].addEventListener('click', containerAdd);  // click event op buttons: run function
     }
 
   } // einde van een bovenste for loop
 
 }
 
+function containerAdd(){
+
+  this.childNodes[5].classList.toggle('container-content-clicked');
+  if (this.childNodes[5].classList.contains('container-content-clicked')) {
+    this.childNodes[1].style.transform = 'translate3D(0, -15px, 10px)';
+    this.childNodes[1].style.boxShadow = '2px 8px 45px rgba(0, 0, 0, .15)';
+    this.childNodes[6].style.transform = 'rotate(180deg)';
+  }else {
+    this.childNodes[1].style.transform = 'translate3D(0, 0, 0)';
+    this.childNodes[1].style.boxShadow = '2px 4px 25px rgba(0, 0, 0, .1)';
+    this.childNodes[6].style.transform = 'rotate(0deg)';
+  }
+  console.log(this.childNodes[5]);
+}
+
 
 
 // progress indicator
-window.onscroll = function() {myFunction();};
 
 function myFunction() {
   var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -142,32 +147,8 @@ function myFunction() {
   document.getElementById("myBar").style.width = scrolled + "%";
 }
 
+window.addEventListener('scroll', myFunction);
 
-// showanimation
-
-// var counter = document.querySelector('p.counter');
-//
-// function countHeight(){
-//   counter.innerHTML="scrollpos = " + window.pageYOffset + " en heightWindow = " + window.innerHeight;
-// }
-//
-// window.addEventListener('scroll', countHeight);
-
-var portAbout = document.querySelector('div.container card:first-child img');
-var portOne = document.querySelector('div.container card:nth-child(2) img');
-var portTwo = document.querySelector('div.container card:nth-child(3) img');
-var portThree = document.querySelector('div.container card:nth-child(4) img');
-var portFour = document.querySelector('div.container card:nth-child(5) img');
-
-var w = window.innerWidth;
-var h = window.innerHeight;
-
-function showSection(){
-  var height = window.pageYOffset;
-
-}
-
-window.addEventListener('scroll', showSection);
 
 // randomcolor
 
