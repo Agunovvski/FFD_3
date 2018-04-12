@@ -1,6 +1,6 @@
 # FFD_3
 
-Frontend For Designers opdracht 3 - Lekker films klikken (mobiel/tablet):
+Frontend For Designers opdracht 3 - Lekker films klikken (mobiel):
 
 <img width="311" alt="screen shot 2018-04-12 at 17 27 58" src="https://user-images.githubusercontent.com/33866004/38687456-09e41a44-3e77-11e8-9562-438806f9e15c.png">
 
