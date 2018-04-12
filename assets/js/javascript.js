@@ -135,13 +135,48 @@ window.addEventListener('scroll', myFunction);
 
 // randomcolor
 
-window.onload = function(e){
-  var colors = ["linear-gradient(to right, #ff0844 0%, #ffb199 100%)", "linear-gradient(to right, #c79081 0%, #dfa579 100%", "linear-gradient(to right, #f9d423 0%, #ff4e50 100%)", "linear-gradient(to right, #243949 0%, #517fa4 100%)", "linear-gradient(to right, #e14fad 0%, #f9d423 100%)" ];
+var colors = ["linear-gradient(to right, #ff0844 0%, #ffb199 100%)", "linear-gradient(to right, #c79081 0%, #dfa579 100%", "linear-gradient(to right, #f9d423 0%, #ff4e50 100%)", "linear-gradient(to right, #243949 0%, #517fa4 100%)", "linear-gradient(to right, #e14fad 0%, #f9d423 100%)" ];
+var color = colors[Math.floor(Math.random()*colors.length)];
 
-  var color = colors[Math.floor(Math.random()*colors.length)];
+function randomColor(e){
   var headerBanner = document.querySelector('header.banner');
   var headerTitle = document.querySelector('h1.welcome');
   headerBanner.style.backgroundImage = color;
   headerTitle.style.backgroundImage = color;
   document.getElementById("myBar").style.backgroundImage = color;
-};
+}
+
+window.addEventListener('load', randomColor);
+
+
+// loading loadState
+
+//  function loadState(){
+//     console.log(request.status);
+//     document.querySelector('.progress-bar').style.display = "none";
+//     document.querySelector('div.spinner').style.display = "block";
+//     document.querySelector('.bounce1').style.backgroundImage = color;
+//     document.querySelector('.bounce2').style.backgroundImage = color;
+//     if (request.status === 200) {
+//             document.querySelector('header.banner').style.display = "block";
+//             document.querySelector('.progress-bar').style.display = "block";
+//             document.querySelector('div.spinner').style.display = "none";
+//         }
+// }
+
+var loadState = setInterval(function(){
+    if (request.status === 200) {
+            document.querySelector('.progress-bar').style.display = "none";
+            document.querySelector('div.spinner').style.display = "block";
+            document.querySelector('.bounce1').style.backgroundImage = color;
+            document.querySelector('.bounce2').style.backgroundImage = color;
+        clearInterval(loadState);
+        setTimeout(function(){
+          document.querySelector('header.banner').style.display = "block";
+          document.querySelector('.progress-bar').style.display = "block";
+          document.querySelector('div.spinner').style.display = "none";
+        },1);
+    }
+},20);
+
+// window.addEventListener('load', loadState);

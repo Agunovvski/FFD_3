@@ -206,6 +206,48 @@ ul.actors-ul{
   z-index: 5;
 }
 
+.spinner {
+  width: 60px;
+  height: 80px;
+  position: relative;
+  margin: 100px auto;
+  display: block;
+}
+
+.bounce1, .bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background-color: #666;
+  /* background-image: linear-gradient(to right, #ff0844 0%, #ffb199 100%); */
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: border-bounce 2.0s infinite ease-in-out;
+  animation: border-bounce 2.0s infinite ease-in-out;
+}
+
+.bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes border-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(2.0) }
+}
+
+@keyframes border-bounce {
+  0%, 100% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% {
+    transform: scale(2.0);
+    -webkit-transform: scale(2.0);
+  }
+}
+
 @media screen and (min-width: 600px) {
   .card {
     flex: 1 1 calc(50% - 2rem);
