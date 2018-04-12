@@ -166,12 +166,16 @@ li{
 } */
 
 .container {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  flex: 0 0 auto;
+  flex: 0 0 auto; */
   -webkit-overflow-scrolling: touch;
   /* flex-wrap: nowrap; */
-  overflow-x: auto;
+  overflow-x: scroll;
+  overflow-y:hidden;
+  height: 100%;
+  /* width: 100%; */
+  white-space:nowrap;
 }
 
 .card {
@@ -182,6 +186,7 @@ li{
   overflow: hidden;
   transition: all .2s linear;
   display: inline-block;
+  width: 90%;
 }
 
 /* .groter{

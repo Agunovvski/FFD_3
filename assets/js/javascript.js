@@ -76,12 +76,6 @@ function showMovies(jsonObj){
       actorsUl.appendChild(actorsLi);
     }
 
-    if (movies[i].actors.length > 6) {
-      var moreActors = document.createElement('li');
-      moreActors.textContent +=  movies[i].actors.length -6 + ' more';
-      actorsUl.appendChild(moreActors);
-    }
-
     var img = document.createElement('img');
     img.src = movies[i].cover;
 
@@ -109,7 +103,6 @@ function showMovies(jsonObj){
     section.appendChild(container);
 
 
-    var loadButtons = document.querySelectorAll('button.more'); // selecteer alle buttons
     var selectCc = document.querySelector('div.container-content');  // selecteer alle containers
     var cards = document.querySelectorAll('div.card');
 
@@ -119,10 +112,9 @@ function showMovies(jsonObj){
 
   } // einde van een bovenste for loop
 
-}
+} // einde function showMovies
 
-function containerAdd(){
-
+function containerAdd(){ // functie toggle de container en doe allerlei dingen
   this.childNodes[5].classList.toggle('container-content-clicked');
   if (this.childNodes[5].classList.contains('container-content-clicked')) {
     this.childNodes[1].style.transform = 'translate3D(0, -15px, 10px)';
@@ -133,7 +125,7 @@ function containerAdd(){
     this.childNodes[1].style.boxShadow = '2px 4px 25px rgba(0, 0, 0, .1)';
     this.childNodes[6].style.transform = 'rotate(0deg)';
   }
-  console.log(this.childNodes[5]);
+  console.log(this);
 }
 
 
