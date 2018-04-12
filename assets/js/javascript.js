@@ -7,7 +7,7 @@ container.setAttribute('class', 'container');
 var headerInfo = document.querySelector('header.card-info');
 
 
-
+// API
 
 var requestURL = 'http://dennistel.nl/movies';
 
@@ -26,10 +26,11 @@ request.onload = function() {
   console.log(jsonObj);
 
   showMovies(jsonObj);
-  // objMovies(jsonObj);
 
 
 };
+
+// API en HTMl linken
 
 function showMovies(jsonObj){
   var movies = jsonObj;
@@ -37,12 +38,13 @@ function showMovies(jsonObj){
   for(var i=0; i < movies.length; i++){
     var card = document.createElement('div');
       card.setAttribute('class', 'card');
+      card.addEventListener('click', containerAdd);
 
     var h1 = document.createElement('h1');
       h1.textContent = movies[i].title;
 
     var p = document.createElement('p');
-    p.textContent = movies[i].simple_plot;
+      p.textContent = movies[i].simple_plot;
 
     var pRd = document.createElement('h5');
     pRd.className = "release-date";
@@ -82,7 +84,6 @@ function showMovies(jsonObj){
     var loadMore = document.createElement('img');
     loadMore.setAttribute('class', 'more');
     loadMore.src = "./images/arrow-grey.png";
-    // loadMore.textContent = "Read more";
 
     var containerContent = document.createElement('div');
     containerContent.setAttribute('class', 'container-content');
@@ -102,14 +103,6 @@ function showMovies(jsonObj){
 
     section.appendChild(container);
 
-
-    var selectCc = document.querySelector('div.container-content');  // selecteer alle containers
-    var cards = document.querySelectorAll('div.card');
-
-     for (b = 0; b < cards.length; b++) { // for loop voor de buttons
-      cards[b].addEventListener('click', containerAdd);  // click event op buttons: run function
-    }
-
   } // einde van een bovenste for loop
 
 } // einde function showMovies
@@ -118,11 +111,9 @@ function containerAdd(){ // functie toggle de container en doe allerlei dingen
   this.childNodes[5].classList.toggle('container-content-clicked');
   if (this.childNodes[5].classList.contains('container-content-clicked')) {
     this.childNodes[1].style.transform = 'translate3D(0, -15px, 10px)';
-    this.childNodes[1].style.boxShadow = '2px 8px 45px rgba(0, 0, 0, .15)';
     this.childNodes[6].style.transform = 'rotate(180deg)';
   }else {
     this.childNodes[1].style.transform = 'translate3D(0, 0, 0)';
-    this.childNodes[1].style.boxShadow = '2px 4px 25px rgba(0, 0, 0, .1)';
     this.childNodes[6].style.transform = 'rotate(0deg)';
   }
   console.log(this);
@@ -143,8 +134,6 @@ window.addEventListener('scroll', myFunction);
 
 
 // randomcolor
-
-
 
 window.onload = function(e){
   var colors = ["linear-gradient(to right, #ff0844 0%, #ffb199 100%)", "linear-gradient(to right, #c79081 0%, #dfa579 100%", "linear-gradient(to right, #f9d423 0%, #ff4e50 100%)", "linear-gradient(to right, #243949 0%, #517fa4 100%)", "linear-gradient(to right, #e14fad 0%, #f9d423 100%)" ];
